@@ -12,7 +12,7 @@ source:
     - setup.patch
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv "
   noarch: python
 
@@ -44,6 +44,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - mxr-conda
     - rluria14
     - adbeda
     - benhuff
