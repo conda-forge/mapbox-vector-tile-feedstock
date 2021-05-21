@@ -1,19 +1,19 @@
 {% set name = "mapbox-vector-tile" %}
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 445e7473ee0f4d2916e6952f6f9402e081d55a9ce0d694a047d767aee8c1ac0c
+  sha256: ef973c47f45e53109239aeae4cad93d140f5a06e439dc5f2495f32ae484b5358
   patches:
     - setup.patch
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv "
+  number: 0
+  script: '{{ PYTHON }} -m pip install . -vv '
   noarch: python
 
 requirements:
