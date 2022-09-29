@@ -46,6 +46,5 @@ extra:
   recipe-maintainers:
     - mxr-conda
     - rluria14
-    - adbeda
     - benhuff
     - jan-janssen
