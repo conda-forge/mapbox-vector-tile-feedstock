@@ -10,7 +10,7 @@ source:
   sha256: 17df141d545e0e30ef21f6b3881fba9e0c6537a23c797be9505ddf37c76ca027
 
 build:
-  number: 0
+  number: 1
   script: '{{ PYTHON }} -m pip install . -vv '
   noarch: python
 
@@ -32,6 +32,10 @@ test:
   imports:
     - mapbox_vector_tile
     - mapbox_vector_tile.Mapbox
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/tilezen/mapbox-vector-tile
