@@ -21,7 +21,7 @@ requirements:
     - pip
   run:
     - python >=3.9.0,<4.0.0
-    - protobuf >=5.26.1,<6.0.0
+    - protobuf
     - shapely >=2.0.0,<3.0.0
     - pyclipper >=1.3.0,<2.0.0
   run_constrained:
@@ -31,6 +31,10 @@ test:
   imports:
     - mapbox_vector_tile
     - mapbox_vector_tile.Mapbox
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/tilezen/mapbox-vector-tile
