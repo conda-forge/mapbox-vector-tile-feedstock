@@ -16,17 +16,16 @@ build:
 
 requirements:
   host:
+    - python >=3.9,<4.0
+    - poetry_core >=1.0.0
     - pip
-    - python >=3.6
-    - poetry
-
   run:
-    - future
-    - protobuf
-    - pyclipper
-    - python >=3.6
-    - setuptools
-    - shapely
+    - python >=3.9.0,<4.0.0
+    - protobuf >=5.26.1,<6.0.0
+    - shapely >=2.0.0,<3.0.0
+    - pyclipper >=1.3.0,<2.0.0
+  run_constrained:
+    - pyproj >=3.4.1,<4.0.0
 
 test:
   imports:
