@@ -22,7 +22,7 @@ requirements:
 
   run:
     - future
-    - protobuf
+    - protobuf <5.0,>=4.21
     - pyclipper
     - python >={{ python_min }}
     - setuptools
