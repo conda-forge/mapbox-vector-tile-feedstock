@@ -1,0 +1,61 @@
+schema_version: 1
+
+context:
+  name: mapbox-vector-tile
+  version: "2.2.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 9fbf2e94890429ccdaf8e047019dccadd9deb03f5b2ae9b5c5561d27a20a0eb3
+  patches:
+    - relax-protobuf-upper-bound.patch
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - poetry
+  run:
+    - future
+    - protobuf >=6.31.1
+    - pyclipper >=1.3.0,<2.0.0
+    - python >=${{ python_min }}
+    - setuptools
+    - shapely >=2.0.0,<3.0.0
+
+tests:
+  - python:
+      imports:
+        - mapbox_vector_tile
+        - mapbox_vector_tile.Mapbox
+      pip_check: true
+      python_version: ${{ python_min }}
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - "python -c \"from mapbox_vector_tile import decode, encode; tile = encode({'name': 'test', 'features': [{'geometry': 'POINT (1 2)', 'properties': {'name': 'feature'}}]}); feature = next(iter(decode(tile).get('test').get('features'))); assert feature.get('properties') == {'name': 'feature'}\""
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: Mapbox Vector Tile
+  homepage: https://github.com/tilezen/mapbox-vector-tile
+  repository: https://github.com/tilezen/mapbox-vector-tile
+
+extra:
+  recipe-maintainers:
+    - mxr-conda
+    - rluria14
+    - benhuff
+    - jan-janssen
